@@ -1,4 +1,5 @@
 import hero from "@/assets/images/hero.webp";
+import InstallButton from "@/components/install-button";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Camera, Check, Sparkles, Zap } from "lucide-react";
@@ -20,16 +21,20 @@ export default function Home() {
                 they&apos;re a perfect match. Style has never been so easy.
               </p>
 
-              <div className="flex flex-col gap-4 min-[400px]:flex-row">
-                <Button
-                  size="lg"
-                  className="bg-main-orange hover:bg-main-orange bg-opacity-70"
-                >
-                  Get Started
-                </Button>
-                <Button size="lg" variant="outline">
-                  Learn More
-                </Button>
+              <div className="flex  gap-4 flex-row">
+                <Link href={"/product"}>
+                  <Button
+                    size="lg"
+                    className="bg-main-orange hover:bg-main-orange bg-opacity-70"
+                  >
+                    Get Started
+                  </Button>
+                </Link>
+                <Link href="/#features">
+                  <Button size="lg" variant="outline">
+                    Learn More
+                  </Button>
+                </Link>
               </div>
             </div>
             <div className="flex items-center justify-center w-full">
@@ -121,12 +126,7 @@ export default function Home() {
                 wardrobe
               </p>
             </div>
-            <Button
-              size="lg"
-              className="bg-main-orange hover:bg-main-orange bg-opacity-70"
-            >
-              Download the App
-            </Button>
+            <InstallButton />
           </div>
         </div>
       </section>

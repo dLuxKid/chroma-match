@@ -1,10 +1,11 @@
+import Footer from "@/components/footer";
+import Navbar from "@/components/navbar";
+import OfflineBanner from "@/components/offline-banner";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import Navbar from "@/components/navbar";
-import Footer from "@/components/footer";
-import OfflineBanner from "@/components/offline-banner";
 import Head from "next/head";
+import { Toaster } from "sonner";
+import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -76,6 +77,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}
       >
+        <Toaster position="bottom-right" richColors />
         <OfflineBanner />
         <Navbar />
         {children}

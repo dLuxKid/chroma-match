@@ -17,4 +17,8 @@ body {
     --background: #fafafa;
     --foreground: #1a1a1a;
   }
+
+  * {
+    /* outline: 1px solid red; */
+  }
 }

@@ -14,21 +14,15 @@ export default function Navbar() {
       <nav className="ml-auto flex gap-4 sm:gap-6">
         <Link
           className="text-sm md:text-base font-medium hover:underline underline-offset-4"
-          href="#features"
+          href="/#features"
         >
           Features
         </Link>
         <Link
           className="text-sm md:text-base font-medium hover:underline underline-offset-4"
-          href="#"
+          href="/#features"
         >
           Pricing
-        </Link>
-        <Link
-          className="text-sm md:text-base font-medium hover:underline underline-offset-4"
-          href="#"
-        >
-          About
         </Link>
       </nav>
     </header>
