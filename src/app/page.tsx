@@ -1,101 +1,135 @@
+import hero from "@/assets/images/hero.webp";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Camera, Check, Sparkles, Zap } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <main className="flex-1">
+      <section className="w-full p-[5%]">
+        <div className="container">
+          <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
+            <div className="flex flex-col justify-center gap-6 md:gap-8">
+              <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
+                Match Your Clothes with AI
+              </h1>
+              <p className="max-w-[600px] text-gray-500 md:text-xl">
+                Upload images of your clothes and let our AI tell you if
+                they&apos;re a perfect match. Style has never been so easy.
+              </p>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+              <div className="flex flex-col gap-4 min-[400px]:flex-row">
+                <Button
+                  size="lg"
+                  className="bg-main-orange hover:bg-main-orange bg-opacity-70"
+                >
+                  Get Started
+                </Button>
+                <Button size="lg" variant="outline">
+                  Learn More
+                </Button>
+              </div>
+            </div>
+            <div className="flex items-center justify-center w-full">
+              <Image
+                alt="Fashion Match App"
+                className="size-full overflow-hidden rounded-xl object-cover object-center sm:w-full max-w-[500px] max-h-[500px]"
+                src={hero}
+              />
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+      <section className="w-full p-[5%]">
+        <div className="container px-4 md:px-6">
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-8">
+            Try It Now
+          </h2>
+          <Card className="w-full max-w-3xl mx-auto hover:scale-100">
+            <CardContent className="p-6">
+              <div className="flex flex-col items-center space-y-4">
+                <div className="flex items-center justify-center w-20 h-20 rounded-full bg-gray-200 dark:bg-gray-700">
+                  <Camera className="h-10 w-10 text-gray-500 dark:text-gray-400" />
+                </div>
+                <h3 className="text-2xl font-semibold text-center">
+                  Upload Your Clothes
+                </h3>
+                <p className="text-center text-gray-500 dark:text-gray-400">
+                  Drag and drop or click to upload images of the clothes you
+                  want to match
+                </p>
+                <Link href={"/product"} className="flex w-full">
+                  <Button
+                    size="lg"
+                    className="bg-main-orange hover:bg-main-orange bg-opacity-70 w-full"
+                  >
+                    Upload Images
+                  </Button>
+                </Link>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+      <section className="w-full p-[5%]" id="features">
+        <div className="container px-4 md:px-6">
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">
+            Key Features
+          </h2>
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <Card>
+              <CardContent className="p-6 flex flex-col items-center text-center space-y-4">
+                <Zap className="h-10 w-10 text-primary" />
+                <h3 className="text-2xl font-semibold">Instant Analysis</h3>
+                <p className="text-gray-500 dark:text-gray-400">
+                  Get immediate feedback on your clothing combinations
+                </p>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardContent className="p-6 flex flex-col items-center text-center space-y-4">
+                <Sparkles className="h-10 w-10 text-primary" />
+                <h3 className="text-2xl font-semibold">AI-Powered Matching</h3>
+                <p className="text-gray-500 dark:text-gray-400">
+                  Our advanced AI ensures accurate and stylish matches
+                </p>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardContent className="p-6 flex flex-col items-center text-center space-y-4">
+                <Check className="h-10 w-10 text-primary" />
+                <h3 className="text-2xl font-semibold">Personal Style Guide</h3>
+                <p className="text-gray-500 dark:text-gray-400">
+                  Get personalized recommendations based on your wardrobe
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+      <section className="w-full p-[5%]">
+        <div className="container px-4 md:px-6">
+          <div className="flex flex-col items-center justify-center space-y-4 text-center">
+            <div className="space-y-2">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                Start Matching Today
+              </h2>
+              <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
+                Join thousands of fashion-forward users and revolutionize your
+                wardrobe
+              </p>
+            </div>
+            <Button
+              size="lg"
+              className="bg-main-orange hover:bg-main-orange bg-opacity-70"
+            >
+              Download the App
+            </Button>
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }
