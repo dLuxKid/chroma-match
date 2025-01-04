@@ -178,6 +178,11 @@ export default function ProductForm() {
     setLoading(true);
 
     try {
+      for (const key in formData) {
+        const { image, ...data } = formData[key];
+        formData[key] = { ...data, image: null };
+      }
+
       const res = await axios.post("/api/submit", formData);
       setResult(JSON.parse(res.data.data));
       setIsOpen(true);
