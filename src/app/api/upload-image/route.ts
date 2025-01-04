@@ -12,7 +12,7 @@ const options = {
   unique_filename: false,
   overwrite: true,
   invalidate: true,
-  resource_type: "auto" as "auto",
+  resource_type: "auto" as "auto" | "image" | "video" | "raw" | undefined,
 };
 
 export async function POST(req: Request) {

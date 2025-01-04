@@ -63,7 +63,7 @@ export default function InstallButton() {
         ) : (
           <p className="text-main-orange font-semibold text-base text-center w-full">
             To install this app on your iOS device, tap the share button and
-            then "Add to Home Screen" .
+            then &quot;Add to Home Screen&quot;.
           </p>
         )}
       </>

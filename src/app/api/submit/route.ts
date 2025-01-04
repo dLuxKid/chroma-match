@@ -59,7 +59,7 @@ function generateUserRoleContent(formData: FormData): string {
   let output =
     "Here are the details of the clothes I want to put on:\n can you give me concise \n";
 
-  Object.entries(formData).forEach(([key, item], index) => {
+  Object.entries(formData).forEach(([key, item]) => {
     output += `${key}:\n`;
     output += `- Type: ${item.type || "Not specified"}\n`;
     output += `- Brand: ${item.brand || "Not specified"}\n`;
