@@ -6,7 +6,7 @@ An AI-powered web application that analyzes clothing colors and provides outfit 
 
 ## 🚀 Live Demo
 
-Experience the app live: [ChromaMatch]([https://your-app.vercel.app](https://chromamatch.vercel.app/))
+Experience the app live: [ChromaMatch](https://your-app.vercel.app](https://chromamatch.vercel.app/)
 
 ---
 
