@@ -95,24 +95,23 @@ export default function ProductForm() {
 
     try {
       if (cropperRef?.current) {
-        toast.info("uploading image");
-        const res = await axios.post("/api/upload-image", {
-          image: cropperRef.current.getCanvas()?.toDataURL() as string,
-        });
+        // const res = await axios.post("/api/upload-image", {
+        //   image: cropperRef.current.getCanvas()?.toDataURL() as string,
+        // });
         const imageColors = await extractColors(
           cropperRef.current.getCanvas()?.toDataURL() as string
         );
+
+        setShowCropper(false);
 
         setFormData((prev) => ({
           ...prev,
           [steps[currentStep].toLowerCase()]: {
             ...prev[steps[currentStep].toLowerCase()],
             imageColors,
-            image: res.data.image,
+            image: cropperRef.current?.getCanvas()?.toDataURL() as string,
           },
         }));
-
-        setShowCropper(false);
       }
     } catch (error) {
       console.log(error);

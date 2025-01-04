@@ -74,24 +74,25 @@ export function AIMatchResultModal({
                 <div className="border-t pt-4">
                   <h4 className="font-semibold mb-2">Your Outfit:</h4>
                   <ul className="space-y-2">
-                    <li className="flex items-center">
-                      <CheckCircle2 className="mr-2 h-4 w-4 text-green-500" />
-                      Shirt: {outfit.shirt?.type} by {outfit.shirt?.brand}
-                    </li>
-                    <li className="flex items-center">
-                      <CheckCircle2 className="mr-2 h-4 w-4 text-green-500" />
-                      Trousers: {outfit.trousers?.type} by{" "}
-                      {outfit.trousers?.brand}
-                    </li>
-                    <li className="flex items-center">
-                      <CheckCircle2 className="mr-2 h-4 w-4 text-green-500" />
-                      Shoes: {outfit.shoes?.type} by {outfit.shoes?.brand}
-                    </li>
-                    {/* <li className="flex items-center">
-                      <CheckCircle2 className="mr-2 h-4 w-4 text-green-500" />
-                      Accessories: {outfit.accessories.type} by{" "}
-                      {outfit.accessories.brand}
-                    </li> */}
+                    {outfit.shirt?.type && outfit.shirt?.brand && (
+                      <li className="flex items-center">
+                        <CheckCircle2 className="mr-2 h-4 w-4 text-green-500" />
+                        Shirt: {outfit.shirt.type} by {outfit.shirt.brand}
+                      </li>
+                    )}
+                    {outfit.trouser?.type && outfit.trouser?.brand && (
+                      <li className="flex items-center">
+                        <CheckCircle2 className="mr-2 h-4 w-4 text-green-500" />
+                        Trousers: {outfit.trousers.type} by{" "}
+                        {outfit.trousers.brand}
+                      </li>
+                    )}
+                    {outfit.shoes?.type && outfit.shoes?.brand && (
+                      <li className="flex items-center">
+                        <CheckCircle2 className="mr-2 h-4 w-4 text-green-500" />
+                        Shoes: {outfit.shoes.type} by {outfit.shoes.brand}
+                      </li>
+                    )}
                   </ul>
                 </div>
                 <p className="my-2 italic font-normal text-base">
