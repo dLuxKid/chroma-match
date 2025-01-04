@@ -1,8 +1,6 @@
-# 🧥 AI Outfit Matcher
+# 🧥 ChromaMatch
 
 An AI-powered web application that analyzes clothing colors and provides outfit suggestions based on user inputs. Crop your images, analyze the colors, and let the app help you create stunning outfits with ease.
-
-[![Deployed on Vercel]](https://chromamatch.vercel.app/))
 
 ---
 
@@ -16,8 +14,6 @@ Experience the app live: [ChromaMatch]([https://your-app.vercel.app](https://chr
 
 - **Color Analysis**: Detect and analyze colors in uploaded clothing images.
 - **Outfit Matching**: AI-generated suggestions to improve or complement your outfits.
-- **Image Cropping**: Refine your images before analysis.
-- **Multi-Step Form**: User-friendly form for uploading images and adding details.
 - **Progressive Web App (PWA)**: Installable for a native app-like experience.
 - **Confetti Celebration**: Confetti animation on successful outfit matches.
 - **Responsive Design**: Optimized for mobile and desktop devices.
@@ -36,7 +32,7 @@ Experience the app live: [ChromaMatch]([https://your-app.vercel.app](https://chr
 
 ## 🌐 Deployment
 
-This project is deployed on **Vercel**. To deploy your version:  
+This project is deployed on **Vercel**.
 
 ---
 
