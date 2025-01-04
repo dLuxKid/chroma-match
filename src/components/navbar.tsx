@@ -7,9 +7,11 @@ export default function Navbar() {
     <header className="px-[5%] h-14 flex items-center">
       <Link className="flex items-center justify-center gap-1" href="/">
         <span>
-          <Image src={logo} alt="logo" className="size-8" />
+          <Image src={logo} alt="logo" className="size-6 md:size-8" />
         </span>
-        <h4 className="font-semibold ~text-2xl/lg">ChromaMatch</h4>
+        <h4 className="font-medium sm:font-semibold text-base sm:text-2xl">
+          ChromaMatch
+        </h4>
       </Link>
       <nav className="ml-auto flex gap-4 sm:gap-6">
         <Link

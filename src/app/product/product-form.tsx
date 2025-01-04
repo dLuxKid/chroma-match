@@ -21,6 +21,7 @@ import { Cropper, CropperRef, RectangleStencil } from "react-advanced-cropper";
 import "react-advanced-cropper/dist/style.css";
 import { toast } from "sonner";
 import { extractColors } from "extract-colors";
+import { AIMatchResultModal } from "./ai-match-result";
 
 const steps = ["Shirt", "Trousers", "Footwear"];
 
@@ -41,7 +42,7 @@ export type FormData = {
 
 const verifyAllFields = (formData: FormData) => {
   for (const key in formData) {
-    if (!formData[key].image) return false;
+    if (!formData[key].image && !formData[key].imageColors.length) return false;
   }
   return true;
 };
@@ -77,6 +78,18 @@ export default function ProductForm() {
 
   const [loading, setLoading] = useState(false);
 
+  const [result, setResult] = useState<{
+    rating: number;
+    comment: string;
+    advice: string;
+  } | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const closeModal = () => {
+    setIsOpen(false);
+    window.location.reload();
+  };
+
   const onCrop = async () => {
     setLoading(true);
 
@@ -98,6 +111,7 @@ export default function ProductForm() {
             image: res.data.image,
           },
         }));
+
         setShowCropper(false);
       }
     } catch (error) {
@@ -159,70 +173,89 @@ export default function ProductForm() {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
+  const handleSubmit = async () => {
     if (!verifyAllFields(formData)) return;
 
     setLoading(true);
 
-    const res = await axios.post("/api/submit", formData);
-    console.log(res.data);
+    try {
+      const res = await axios.post("/api/submit", formData);
+      setResult(JSON.parse(res.data.data));
+      setIsOpen(true);
+    } catch (error) {
+      console.error(error);
+      toast.error("An error occured while submitting the form");
+    }
 
     setLoading(false);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Card className="w-full max-w-2xl mx-auto hover:scale-100">
-        <CardHeader>
-          <Progress
-            value={((currentStep + 1) / steps.length) * 100}
-            className="mb-4 h-2"
-          />
-          <CardTitle>{steps[currentStep]} Details</CardTitle>
-        </CardHeader>
-        <CardContent className="flex flex-col gap-4">
-          <RenderFormFields
-            step={steps[currentStep]}
-            handleFileChange={handleFileChange}
-            handleInputChange={handleInputChange}
-            formData={formData}
-            cropperRef={cropperRef}
-            showCropper={showCropper}
-            onCrop={onCrop}
-          />
-        </CardContent>
-        <CardFooter className="flex justify-between">
-          <Button
-            type="button"
-            variant="outline"
-            onClick={handlePrevious}
-            disabled={currentStep === 0 || loading}
-          >
-            <ChevronLeft className="mr-2 h-4 w-4" /> Previous
-          </Button>
-          {currentStep === steps.length - 1 ? (
+    <>
+      {isOpen && (
+        <AIMatchResultModal
+          isOpen={isOpen}
+          closeModal={closeModal}
+          outfit={formData}
+          result={result}
+        />
+      )}
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleSubmit();
+        }}
+      >
+        <Card className="w-full max-w-2xl mx-auto hover:scale-100">
+          <CardHeader>
+            <Progress
+              value={((currentStep + 1) / steps.length) * 100}
+              className="mb-4 h-2"
+            />
+            <CardTitle>{steps[currentStep]} Details</CardTitle>
+          </CardHeader>
+          <CardContent className="flex flex-col gap-4">
+            <RenderFormFields
+              step={steps[currentStep]}
+              handleFileChange={handleFileChange}
+              handleInputChange={handleInputChange}
+              formData={formData}
+              cropperRef={cropperRef}
+              showCropper={showCropper}
+              onCrop={onCrop}
+            />
+          </CardContent>
+          <CardFooter className="flex gap-4 justify-between">
             <Button
-              disabled={loading}
-              className="bg-main-orange hover:bg-main-orange bg-opacity-70 disabled:bg-main-orange/50 flex items-center justify-center"
-              type="submit"
-            >
-              {loading ? <Loader /> : "Submit"}
-            </Button>
-          ) : (
-            <Button
-              className="flex items-center justify-center"
               type="button"
-              disabled={loading}
-              onClick={handleNext}
+              variant="outline"
+              onClick={handlePrevious}
+              disabled={currentStep === 0 || loading}
             >
-              {loading ? <Loader /> : "Next"}
+              <ChevronLeft className="mr-2 h-4 w-4" /> Previous
             </Button>
-          )}
-        </CardFooter>
-      </Card>
-    </form>
+            {currentStep === steps.length - 1 ? (
+              <Button
+                type="submit"
+                disabled={loading}
+                className="bg-main-orange hover:bg-main-orange bg-opacity-70 disabled:bg-main-orange/50 flex items-center justify-center"
+              >
+                {loading ? <Loader /> : "Submit"}
+              </Button>
+            ) : (
+              <Button
+                type="button"
+                className="flex items-center justify-center"
+                disabled={loading}
+                onClick={handleNext}
+              >
+                {loading ? <Loader /> : "Next"}
+              </Button>
+            )}
+          </CardFooter>
+        </Card>
+      </form>
+    </>
   );
 }
 

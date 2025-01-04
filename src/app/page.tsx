@@ -11,17 +11,17 @@ export default function Home() {
     <main className="flex-1">
       <section className="w-full p-[5%]">
         <div className="container">
-          <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
-            <div className="flex flex-col justify-center gap-6 md:gap-8">
-              <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
+          <div className="grid gap-8 md:gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
+            <div className="flex flex-col justify-center items-center lg:items-start w-full gap-6 md:gap-8">
+              <h1 className="text-4xl text-center lg:text-start w-full font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
                 Match Your Clothes with AI
               </h1>
-              <p className="max-w-[600px] text-gray-500 md:text-xl">
+              <p className="max-w-[600px] text-center lg:text-start w-full text-gray-500 text-base md:text-xl">
                 Upload images of your clothes and let our AI tell you if
                 they&apos;re a perfect match. Style has never been so easy.
               </p>
 
-              <div className="flex  gap-4 flex-row">
+              <div className="flex gap-4 flex-row">
                 <Link href={"/product"}>
                   <Button
                     size="lg"

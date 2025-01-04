@@ -40,8 +40,6 @@ export async function POST(req: Request) {
     presence_penalty: 0,
   });
 
-  console.log(response.choices[0].message);
-
   try {
     return Response.json({
       status: "success",
