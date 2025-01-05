@@ -178,12 +178,12 @@ export default function ProductForm() {
     setLoading(true);
 
     try {
+      const data: FormData = formData;
       for (const key in formData) {
-        const { image, ...data } = formData[key];
-        formData[key] = { ...data, image: null };
+        data[key] = { ...formData[key], image: null };
       }
 
-      const res = await axios.post("/api/submit", formData);
+      const res = await axios.post("/api/submit", data);
       setResult(JSON.parse(res.data.data));
       setIsOpen(true);
     } catch (error) {
@@ -204,20 +204,15 @@ export default function ProductForm() {
           result={result}
         />
       )}
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          handleSubmit();
-        }}
-      >
-        <Card className="w-full max-w-2xl mx-auto hover:scale-100">
-          <CardHeader>
-            <Progress
-              value={((currentStep + 1) / steps.length) * 100}
-              className="mb-4 h-2"
-            />
-            <CardTitle>{steps[currentStep]} Details</CardTitle>
-          </CardHeader>
+      <Card className="w-full max-w-2xl mx-auto hover:scale-100">
+        <CardHeader>
+          <Progress
+            value={((currentStep + 1) / steps.length) * 100}
+            className="mb-4 h-2"
+          />
+          <CardTitle>{steps[currentStep]} Details</CardTitle>
+        </CardHeader>
+        <form onSubmit={(e) => e.preventDefault()}>
           <CardContent className="flex flex-col gap-4">
             <RenderFormFields
               step={steps[currentStep]}
@@ -242,6 +237,10 @@ export default function ProductForm() {
               <Button
                 type="submit"
                 disabled={loading}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleSubmit();
+                }}
                 className="bg-main-orange hover:bg-main-orange bg-opacity-70 disabled:bg-main-orange/50 flex items-center justify-center"
               >
                 {loading ? <Loader /> : "Submit"}
@@ -257,8 +256,8 @@ export default function ProductForm() {
               </Button>
             )}
           </CardFooter>
-        </Card>
-      </form>
+        </form>
+      </Card>
     </>
   );
 }
@@ -299,7 +298,9 @@ const RenderFormFields = ({
           className="size-full aspect-[6/9] mx-auto"
         />
 
-        <Button onClick={onCrop}>crop</Button>
+        <Button type="button" onClick={onCrop}>
+          crop
+        </Button>
       </div>
     );
 
