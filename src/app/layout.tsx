@@ -37,8 +37,8 @@ export const metadata: Metadata = {
     description:
       "Revolutionize your wardrobe with ChromaMatch. Let AI analyze and suggest perfect outfit matches. Get started today!",
     type: "website",
-    url: "https://www.chromamatch.com",
-    images: "https://www.chromamatch.com/logo.png",
+    url: "https://chromamatch.vercel.app",
+    images: "https://chromamatch.vercel.app/logo.png",
     locale: "en_US",
     siteName: "ChromaMatch",
   },
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     title: "ChromaMatch - AI-Powered Clothing Color Matcher",
     description:
       "Use ChromaMatch to discover and match clothing effortlessly with the power of AI. Style made simple!",
-    images: "https://www.chromamatch.com/logo.png",
+    images: "https://chromamatch.vercel.app/logo.png",
   },
   robots: {
     index: true,
